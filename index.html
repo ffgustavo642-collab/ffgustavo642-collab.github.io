@@ -11,26 +11,13 @@
       background: #e9f3ff;
     }
 
-    /* TOPO COM IMAGEM */
     header {
-  background-image: url("img/fundo-limpeza.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 250px; /* altura da imagem */
-}
-
-    header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+      background-image: url("img/fundo-limpeza.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 250px;
     }
 
-    header p {
-      font-size: 18px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-    }
-
-    /* FUNDO AZUL DA ÁREA DE PRODUTOS */
     .area-produtos {
       background: linear-gradient(180deg, #0a7cff, #1e90ff);
       padding: 40px 0;
@@ -84,16 +71,10 @@
       background: #25d366;
       color: #fff;
       border: none;
-      padding: 10px 15px;
+      padding: 10px;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 15px;
       width: 100%;
-      margin-top: 5px;
-    }
-
-    .produto button:hover {
-      background: #1ebe5d;
     }
 
     footer {
@@ -102,143 +83,124 @@
       text-align: center;
       padding: 15px;
     }
+
+    /* ABAS */
+    .abas {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .abas button {
+      background: #fff;
+      color: #0a7cff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .abas button.ativa {
+      background: #0a7cff;
+      color: #fff;
+    }
+
+    /* CATEGORIAS */
+    .categoria {
+      display: none;
+    }
+
+    .categoria.ativa {
+      display: block;
+    }
   </style>
 </head>
-<script>
-function mostrarCategoria(id) {
-  const categorias = document.querySelectorAll('.categoria');
-  const botoes = document.querySelectorAll('.abas button');
-
-  categorias.forEach(cat => cat.classList.remove('ativa'));
-  botoes.forEach(btn => btn.classList.remove('ativa'));
-
-  document.getElementById(id).classList.add('ativa');
-  event.target.classList.add('ativa');
-}
-</script>
 
 <body>
 
-  <!-- TOPO -->
-  <header>
-  </header>
+<header></header>
 
-  <!-- ÁREA AZUL -->
-  <section class="area-produtos">
-    <div class="containerl">
-      
-<!-- ÁREA BANHEIRO -->
 <section class="area-produtos">
   <div class="container">
+
+    <!-- ABAS -->
     <div class="abas">
-  <button class="ativa" onclick="mostrarCategoria('banheiro')">Banheiro</button>
-  <button onclick="mostrarCategoria('limpeza')">Limpeza Geral</button>
+      <button class="ativa" onclick="mostrarCategoria('banheiro', this)">Banheiro</button>
+      <button onclick="mostrarCategoria('limpeza', this)">Limpeza Geral</button>
     </div>
-    
-    <h2>Produtos para Banheiro</h2>
 
-    <div class="produtos">
-
-      <!-- VASSOURA DE CANTO -->
-      <div class="produto">
-        <img src="img/vassoura-de-canto.jpg" alt="Vassoura de Canto" />
-
-        <h3>Vassoura de Canto</h3>
-
-        <p>Ideal para alcançar cantos difíceis do banheiro.</p>
-
-        <p><strong>R$ 19,00</strong></p>
-
-        <button onclick="encomendar('Vassoura de Canto - R$ 18,00')">
-          Encomendar
-        </button>
-        <div id="banheiro" class="categoria ativa">
-        </div>
-      </div>
-
-      <!-- DESINFETANTE BANHEIRO -->
-      <div class="produto">
-        <img src="img/desinfetante-banheiro.jpg" alt="Desinfetante para Banheiro" />
-
-        <h3>Desinfetante para Banheiro</h3>
-
-        <p>Elimina germes e deixa perfume agradável.</p>
-
-        <p><strong>R$ 10,00</strong></p>
-
-        <button onclick="encomendar('Desinfetante para Banheiro - R$ 10,00')">
-          Encomendar
-        </button>
-      </div>
-
-    </div>
-  </div>
-</section>
-      
+    <!-- BANHEIRO -->
+    <div id="banheiro" class="categoria ativa">
+      <h2>Produtos para Banheiro</h2>
       <div class="produtos">
 
-        <!-- PRODUTO BONRRUQUE -->
         <div class="produto">
-          <img src="img/sabao-liquido-bonrruque.jpg" alt="Sabão Líquido Bonrruque" />
-
-          <h3>Sabão Líquido Bonrruque</h3>
-          <p>Sabão líquido ideal para lavar roupas, alto rendimento.</p>
-
-          <p><strong>2 Litros — R$ 12,00</strong></p>
-          <button onclick="encomendar('Sabão Líquido Bonrruque 2L - R$ 12,00')">
-            Comprar 2L
-          </button>
-
-          <p><strong>5 Litros — R$ 25,00</strong></p>
-          <button onclick="encomendar('Sabão Líquido Bonrruque 5L - R$ 25,00')">
-            Comprar 5L
-          </button>
+          <img src="img/vassoura-de-canto.jpg">
+          <h3>Vassoura de Canto</h3>
+          <p>Ideal para cantos difíceis.</p>
+          <p><strong>R$ 19,00</strong></p>
+          <button onclick="encomendar('Vassoura de Canto - R$ 19,00')">Encomendar</button>
         </div>
 
-        <!-- DESINFETANTE -->
         <div class="produto">
-          <img src="https://via.placeholder.com/300x200" alt="Desinfetante" />
+          <img src="img/desinfetante-banheiro.jpg">
           <h3>Desinfetante</h3>
-          <p>Elimina 99,9% dos germes.</p>
+          <p>Perfume agradável.</p>
           <p><strong>R$ 10,00</strong></p>
-          <button onclick="encomendar('Desinfetante - R$ 10,00')">
-            Encomendar
-          </button>
-        </div>
-
-        <!-- ÁGUA SANITÁRIA -->
-        <div class="produto">
-          <img src="https://via.placeholder.com/300x200" alt="Água Sanitária" />
-          <h3>Água Sanitária</h3>
-          <p>Perfeita para limpeza pesada.</p>
-          <p><strong>R$ 7,00</strong></p>
-          <button onclick="encomendar('Água Sanitária - R$ 7,00')">
-            Encomendar
-          </button>
+          <button onclick="encomendar('Desinfetante Banheiro - R$ 10,00')">Encomendar</button>
         </div>
 
       </div>
     </div>
-  </section>
 
-  <footer>
-  <p>
-    📞 Encomendas pelo WhatsApp <br>
-    📧 Fazemos também encomendas pelo e-mail:<br>
-    <strong>furacaodalimpeza027@gmail.com</strong>
-  </p>
+    <!-- LIMPEZA GERAL -->
+    <div id="limpeza" class="categoria">
+      <h2>Limpeza Geral</h2>
+      <div class="produtos">
+
+        <div class="produto">
+          <img src="img/sabao-liquido-bonrruque.jpg">
+          <h3>Sabão Líquido Bonrruque</h3>
+          <p><strong>2L — R$ 12,00</strong></p>
+          <button onclick="encomendar('Sabão Bonrruque 2L - R$ 12,00')">Comprar</button>
+        </div>
+
+        <div class="produto">
+          <img src="https://via.placeholder.com/300x200">
+          <h3>Água Sanitária</h3>
+          <p><strong>R$ 7,00</strong></p>
+          <button onclick="encomendar('Água Sanitária - R$ 7,00')">Encomendar</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>📞 Encomendas pelo WhatsApp<br>
+     📧 furacaodalimpeza027@gmail.com</p>
   <p>© 2026 Furacão da Limpeza</p>
 </footer>
 
+<script>
+function mostrarCategoria(id, botao) {
+  document.querySelectorAll('.categoria').forEach(c => c.classList.remove('ativa'));
+  document.querySelectorAll('.abas button').forEach(b => b.classList.remove('ativa'));
 
-  <script>
-    function encomendar(produto) {
-      const telefone = '5599999999999';
-      const mensagem = `Olá! Gostaria de encomendar: ${produto}`;
-      const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-      window.open(url, '_blank');
-    }
-  </script>
+  document.getElementById(id).classList.add('ativa');
+  botao.classList.add('ativa');
+}
+
+function encomendar(produto) {
+  const telefone = '5599999999999';
+  const msg = `Olá! Gostaria de encomendar: ${produto}`;
+  window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+</script>
 
 </body>
 </html>
