@@ -104,6 +104,18 @@
     }
   </style>
 </head>
+<script>
+function mostrarCategoria(id) {
+  const categorias = document.querySelectorAll('.categoria');
+  const botoes = document.querySelectorAll('.abas button');
+
+  categorias.forEach(cat => cat.classList.remove('ativa'));
+  botoes.forEach(btn => btn.classList.remove('ativa'));
+
+  document.getElementById(id).classList.add('ativa');
+  event.target.classList.add('ativa');
+}
+</script>
 
 <body>
 
