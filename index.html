@@ -33,26 +33,21 @@ header {
   padding: 20px;
 }
 
-h2 {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 25px;
-}
-
 /* ABAS */
 .abas {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   margin-bottom: 25px;
+  flex-wrap: wrap;
 }
 
 .abas button {
   background: #fff;
   color: #0a7cff;
   border: none;
-  padding: 12px 25px;
-  border-radius: 30px;
+  padding: 10px 18px;
+  border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -71,46 +66,47 @@ h2 {
   display: block;
 }
 
+h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 /* PRODUTOS */
 .produtos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
 .produto {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 15px;
   text-align: center;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
 .produto img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .produto h3 {
   color: #0a7cff;
-  margin: 10px 0;
-}
-
-.produto p {
-  color: #555;
 }
 
 .produto button {
   background: #25d366;
   color: #fff;
   border: none;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px;
   width: 100%;
-  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .produto button:hover {
@@ -122,26 +118,9 @@ footer {
   background: #0a7cff;
   color: #fff;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
 }
 </style>
-
-<script>
-function mostrarCategoria(id, botao) {
-  document.querySelectorAll('.categoria').forEach(c => c.classList.remove('ativa'));
-  document.querySelectorAll('.abas button').forEach(b => b.classList.remove('ativa'));
-
-  document.getElementById(id).classList.add('ativa');
-  botao.classList.add('ativa');
-}
-
-function encomendar(produto) {
-  const telefone = "5599999999999";
-  const mensagem = `Olá! Gostaria de encomendar: ${produto}`;
-  const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-  window.open(url, "_blank");
-}
-</script>
 </head>
 
 <body>
@@ -151,67 +130,94 @@ function encomendar(produto) {
 <section class="area-produtos">
 <div class="container">
 
-  <!-- ABAS -->
-  <div class="abas">
-    <button class="ativa" onclick="mostrarCategoria('banheiro', this)">Banheiro</button>
-    <button onclick="mostrarCategoria('limpeza', this)">Limpeza Geral</button>
+<!-- ABAS -->
+<div class="abas">
+  <button class="ativa" onclick="mostrarCategoria('banheiro', this)">Banheiro</button>
+  <button onclick="mostrarCategoria('limpeza', this)">Limpeza Geral</button>
+  <button onclick="mostrarCategoria('casa', this)">Casa</button>
+</div>
+
+<!-- BANHEIRO -->
+<div id="banheiro" class="categoria ativa">
+<h2>Produtos para Banheiro</h2>
+<div class="produtos">
+
+  <div class="produto">
+    <img src="img/desinfetante-banheiro.jpg">
+    <h3>Desinfetante para Banheiro</h3>
+    <p>Elimina germes e perfuma.</p>
+    <p><strong>R$ 10,00</strong></p>
+    <button onclick="encomendar('Desinfetante Banheiro - R$ 10,00')">Encomendar</button>
   </div>
 
-  <!-- BANHEIRO -->
-  <div id="banheiro" class="categoria ativa">
-    <h2>Produtos para Banheiro</h2>
+</div>
+</div>
 
-    <div class="produtos">
-      <div class="produto">
-        <img src="img/vassoura-de-canto.jpg">
-        <h3>Vassoura de Canto</h3>
-        <p>R$ 19,00</p>
-        <button onclick="encomendar('Vassoura de Canto - R$ 19,00')">Comprar</button>
-      </div>
+<!-- LIMPEZA GERAL -->
+<div id="limpeza" class="categoria">
+<h2>Limpeza Geral</h2>
+<div class="produtos">
 
-      <div class="produto">
-        <img src="img/desinfetante-banheiro.jpg">
-        <h3>Desinfetante Banheiro</h3>
-        <p>R$ 10,00</p>
-        <button onclick="encomendar('Desinfetante Banheiro - R$ 10,00')">Comprar</button>
-      </div>
-    </div>
+  <div class="produto">
+    <img src="img/sabao-liquido-bonrruque.jpg">
+    <h3>Sabão Líquido Bonrruque</h3>
+    <p><strong>2L — R$ 12,00</strong></p>
+    <button onclick="encomendar('Sabão Líquido 2L - R$ 12,00')">Comprar 2L</button>
+    <p><strong>5L — R$ 25,00</strong></p>
+    <button onclick="encomendar('Sabão Líquido 5L - R$ 25,00')">Comprar 5L</button>
   </div>
 
-  <!-- LIMPEZA GERAL -->
-  <div id="limpeza" class="categoria">
-    <h2>Limpeza Geral</h2>
-
-    <div class="produtos">
-      <div class="produto">
-        <img src="img/sabao-liquido-bonrruque.jpg">
-        <h3>Sabão Líquido Bonrruque</h3>
-        <p>2L — R$ 12,00</p>
-        <button onclick="encomendar('Sabão Líquido Bonrruque 2L - R$ 12,00')">Comprar</button>
-
-        <p style="margin-top:10px;">5L — R$ 25,00</p>
-        <button onclick="encomendar('Sabão Líquido Bonrruque 5L - R$ 25,00')">Comprar</button>
-      </div>
-
-      <div class="produto">
-        <img src="https://via.placeholder.com/300x200">
-        <h3>Água Sanitária</h3>
-        <p>R$ 7,00</p>
-        <button onclick="encomendar('Água Sanitária - R$ 7,00')">Comprar</button>
-      </div>
-    </div>
+  <div class="produto">
+    <img src="https://via.placeholder.com/300x200">
+    <h3>Água Sanitária</h3>
+    <p>Limpeza pesada.</p>
+    <p><strong>R$ 7,00</strong></p>
+    <button onclick="encomendar('Água Sanitária - R$ 7,00')">Encomendar</button>
   </div>
+
+</div>
+</div>
+
+<!-- CASA -->
+<div id="casa" class="categoria">
+<h2>Produtos para Casa</h2>
+<div class="produtos">
+
+  <div class="produto">
+    <img src="img/vassoura-de-canto.jpg">
+    <h3>Vassoura de Canto</h3>
+    <p>Ideal para cantos difíceis.</p>
+    <p><strong>R$ 19,00</strong></p>
+    <button onclick="encomendar('Vassoura de Canto - R$ 19,00')">Encomendar</button>
+  </div>
+
+</div>
+</div>
 
 </div>
 </section>
 
 <footer>
-  <p>📞 Encomendas pelo WhatsApp</p>
-  <p>📧 Também fazemos encomendas
-    pelo e-mail:</p>
-  <strong>furacaodalimpeza027@gmail.com</strong>
-  <p style="margin-top:10px;">© 2026 Furacão da Limpeza</p>
+<p>📞 Encomendas pelo WhatsApp</p>
+<p>📧 Também aceitamos encomendas pelo e-mail:</p>
+<strong>furacaodalimpeza027@gmail.com</strong>
+<p>© 2026 Furacão da Limpeza</p>
 </footer>
+
+<script>
+function mostrarCategoria(id, botao) {
+  document.querySelectorAll('.categoria').forEach(c => c.classList.remove('ativa'));
+  document.querySelectorAll('.abas button').forEach(b => b.classList.remove('ativa'));
+  document.getElementById(id).classList.add('ativa');
+  botao.classList.add('ativa');
+}
+
+function encomendar(produto) {
+  const telefone = '5599999999999';
+  const msg = `Olá! Gostaria de encomendar: ${produto}`;
+  window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+</script>
 
 </body>
 </html>
