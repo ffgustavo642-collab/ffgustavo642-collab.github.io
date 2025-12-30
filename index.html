@@ -21,25 +21,12 @@ header {
   height: 220px;
 }
 
-/* ÁREA PRODUTOS */
-.area-produtos {
-  background: linear-gradient(180deg, #0a7cff, #1e90ff);
-  padding: 30px 0;
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
-}
-
 /* ABAS */
 .abas {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 25px;
-  flex-wrap: wrap;
+  margin: 20px;
 }
 
 .abas button {
@@ -66,10 +53,15 @@ header {
   display: block;
 }
 
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 15px;
+}
+
 h2 {
-  color: #fff;
+  color: #0a7cff;
   text-align: center;
-  margin-bottom: 20px;
 }
 
 /* PRODUTOS */
@@ -83,34 +75,53 @@ h2 {
   background: #fff;
   border-radius: 10px;
   padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
   text-align: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
 .produto img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 6px;
-}
-
-.produto h3 {
-  color: #0a7cff;
+  border-radius: 8px;
 }
 
 .produto button {
   background: #25d366;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* CARRINHO */
+#carrinho {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 3px solid #0a7cff;
+  padding: 10px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,.2);
+}
+
+#carrinho ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+}
+
+#carrinho button {
+  background: #0a7cff;
   color: #fff;
   border: none;
   padding: 10px;
   width: 100%;
   border-radius: 6px;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.produto button:hover {
-  background: #1ebe5d;
 }
 
 /* RODAPÉ */
@@ -118,7 +129,8 @@ footer {
   background: #0a7cff;
   color: #fff;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
+  margin-bottom: 120px;
 }
 </style>
 </head>
@@ -127,9 +139,6 @@ footer {
 
 <header></header>
 
-<section class="area-produtos">
-<div class="container">
-
 <!-- ABAS -->
 <div class="abas">
   <button class="ativa" onclick="mostrarCategoria('banheiro', this)">Banheiro</button>
@@ -137,18 +146,19 @@ footer {
   <button onclick="mostrarCategoria('casa', this)">Casa</button>
 </div>
 
+<div class="container">
+
 <!-- BANHEIRO -->
 <div id="banheiro" class="categoria ativa">
 <h2>Produtos para Banheiro</h2>
 <div class="produtos">
 
-  <div class="produto">
-    <img src="img/desinfetante-banheiro.jpg">
-    <h3>Desinfetante para Banheiro</h3>
-    <p>Elimina germes e perfuma.</p>
-    <p><strong>R$ 10,00</strong></p>
-    <button onclick="encomendar('Desinfetante Banheiro - R$ 10,00')">Encomendar</button>
-  </div>
+<div class="produto">
+<img src="img/desinfetante-banheiro.jpg">
+<h3>Desinfetante Banheiro</h3>
+<p>R$ 10,00</p>
+<button onclick="adicionar('Desinfetante Banheiro', 10)">Adicionar</button>
+</div>
 
 </div>
 </div>
@@ -158,64 +168,86 @@ footer {
 <h2>Limpeza Geral</h2>
 <div class="produtos">
 
-  <div class="produto">
-    <img src="img/sabao-liquido-bonrruque.jpg">
-    <h3>Sabão Líquido Bonrruque</h3>
-    <p><strong>2L — R$ 12,00</strong></p>
-    <button onclick="encomendar('Sabão Líquido 2L - R$ 12,00')">Comprar 2L</button>
-    <p><strong>5L — R$ 25,00</strong></p>
-    <button onclick="encomendar('Sabão Líquido 5L - R$ 25,00')">Comprar 5L</button>
-  </div>
+<div class="produto">
+<img src="img/sabao-liquido-bonrruque.jpg">
+<h3>Sabão Líquido 2L</h3>
+<p>R$ 12,00</p>
+<button onclick="adicionar('Sabão Líquido 2L', 12)">Adicionar</button>
 
-  <div class="produto">
-    <img src="https://via.placeholder.com/300x200">
-    <h3>Água Sanitária</h3>
-    <p>Limpeza pesada.</p>
-    <p><strong>R$ 7,00</strong></p>
-    <button onclick="encomendar('Água Sanitária - R$ 7,00')">Encomendar</button>
-  </div>
+<h3>Sabão Líquido 5L</h3>
+<p>R$ 25,00</p>
+<button onclick="adicionar('Sabão Líquido 5L', 25)">Adicionar</button>
+</div>
 
 </div>
 </div>
 
 <!-- CASA -->
 <div id="casa" class="categoria">
-<h2>Produtos para Casa</h2>
+<h2>Casa</h2>
 <div class="produtos">
 
-  <div class="produto">
-    <img src="img/vassoura-de-canto.jpg">
-    <h3>Vassoura de Canto</h3>
-    <p>Ideal para cantos difíceis.</p>
-    <p><strong>R$ 19,00</strong></p>
-    <button onclick="encomendar('Vassoura de Canto - R$ 19,00')">Encomendar</button>
-  </div>
-
-</div>
+<div class="produto">
+<img src="img/vassoura-de-canto.jpg">
+<h3>Vassoura de Canto</h3>
+<p>R$ 19,00</p>
+<button onclick="adicionar('Vassoura de Canto', 19)">Adicionar</button>
 </div>
 
 </div>
-</section>
+</div>
+
+</div>
+
+<!-- CARRINHO -->
+<div id="carrinho">
+<strong>Carrinho</strong>
+<ul id="lista"></ul>
+<p><strong>Total: R$ <span id="total">0</span></strong></p>
+<button onclick="finalizar()">Finalizar no WhatsApp</button>
+</div>
 
 <footer>
 <p>📞 Encomendas pelo WhatsApp</p>
-<p>📧 Também aceitamos encomendas pelo e-mail:</p>
+<p>📧 Também aceitamos pedidos pelo e-mail:</p>
 <strong>furacaodalimpeza027@gmail.com</strong>
 <p>© 2026 Furacão da Limpeza</p>
 </footer>
 
 <script>
-function mostrarCategoria(id, botao) {
+let carrinho = [];
+let total = 0;
+
+function mostrarCategoria(id, btn) {
   document.querySelectorAll('.categoria').forEach(c => c.classList.remove('ativa'));
   document.querySelectorAll('.abas button').forEach(b => b.classList.remove('ativa'));
   document.getElementById(id).classList.add('ativa');
-  botao.classList.add('ativa');
+  btn.classList.add('ativa');
 }
 
-function encomendar(produto) {
-  const telefone = '5599999999999';
-  const msg = `Olá! Gostaria de encomendar: ${produto}`;
-  window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`, '_blank');
+function adicionar(nome, preco) {
+  carrinho.push({nome, preco});
+  total += preco;
+  atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+  const lista = document.getElementById('lista');
+  lista.innerHTML = '';
+  carrinho.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = `${item.nome} - R$ ${item.preco}`;
+    lista.appendChild(li);
+  });
+  document.getElementById('total').textContent = total.toFixed(2);
+}
+
+function finalizar() {
+  let msg = 'Olá! Gostaria de encomendar:%0A';
+  carrinho.forEach(i => msg += `- ${i.nome} (R$ ${i.preco})%0A`);
+  msg += `Total: R$ ${total.toFixed(2)}`;
+
+  window.open(`https://wa.me/5599999999999?text=${msg}`, '_blank');
 }
 </script>
 
