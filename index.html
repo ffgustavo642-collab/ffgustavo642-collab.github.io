@@ -94,7 +94,8 @@ h2{text-align:center;color:#0a7cff}
  border:none;
  background:#0a7cff;
  color:#fff;
- cursor:pointer
+ cursor:pointer;
+ font-size:14px
 }
 .item-carrinho button.lixeira{background:#ff3d00}
 
@@ -117,7 +118,7 @@ h2{text-align:center;color:#0a7cff}
 
 <div class="abas">
 <button class="ativa" onclick="mostrarCategoria('banheiro',this)">Banheiro</button>
-<button onclick="mostrarCategoria('limpeza',this)">Limpeza Geral</button>
+<button onclick="mostrarCategoria('limpeza',this)">Produtos de Limpeza</button>
 <button onclick="mostrarCategoria('casa',this)">Casa</button>
 </div>
 
@@ -127,8 +128,9 @@ h2{text-align:center;color:#0a7cff}
 <div id="banheiro" class="categoria ativa">
 <h2>Banheiro</h2>
 <div class="produtos">
-
-<div class="produto">
+ 
+<!-- produtos banheiro -->
+  <div class="produto">
 <img src="img/sabonete-liquido-dove.jpg">
 <h3>Sabonete Líquido Dove</h3>
 <div class="variacoes">
@@ -142,31 +144,62 @@ h2{text-align:center;color:#0a7cff}
   </div>
 </div>
 </div>
-
-<div class="produto">
+ 
+ <div class="produto">
 <img src="img/sabonete-liquido-erva-doce.jpg">
 <h3>Sabonete Líquido Erva Doce</h3>
 <div class="variacoes">
   <div class="linha">
     <span>1L — R$ 12,00</span>
-    <button onclick="addProduto('Sabonete Erva Doce 1L',12)">Adicionar</button>
+    <button onclick="addProduto('Sabonete Liquido Erva Doce 1L',12)">Adicionar</button>
   </div>
   <div class="linha">
     <span>5L — R$ 35,00</span>
-    <button onclick="addProduto('Sabonete Erva Doce 5L',35)">Adicionar</button>
+    <button onclick="addProduto('Sabonete Liquido Erva Doce 5L',35)">Adicionar</button>
   </div>
 </div>
 </div>
-
+ 
 </div>
 </div>
 
-<!-- LIMPEZA -->
+<!-- PRODUTOS DE LIMPEZA -->
 <div id="limpeza" class="categoria">
-<h2>Limpeza Geral</h2>
+<h2>Produtos de Limpeza</h2>
 <div class="produtos">
-
-<div class="produto">
+ 
+<!-- produtos limpeza -->
+ <div class="produto">
+<img src="img/sabonete-liquido-dove.jpg">
+<h3>Sabonete Líquido Dove</h3>
+<div class="variacoes">
+  <div class="linha">
+    <span>1L — R$ 12,00</span>
+    <button onclick="addProduto('Sabonete Dove 1L',12)">Adicionar</button>
+  </div>
+  <div class="linha">
+    <span>5L — R$ 35,00</span>
+    <button onclick="addProduto('Sabonete Dove 5L',35)">Adicionar</button>
+  </div>
+</div>
+</div>
+ 
+ <div class="produto">
+<img src="img/sabonete-liquido-erva-doce.jpg">
+<h3>Sabonete Líquido Erva Doce</h3>
+<div class="variacoes">
+  <div class="linha">
+    <span>1L — R$ 12,00</span>
+    <button onclick="addProduto('Sabonete Liquido Erva Doce 1L',12)">Adicionar</button>
+  </div>
+  <div class="linha">
+    <span>5L — R$ 35,00</span>
+    <button onclick="addProduto('Sabonete Liquido Erva Doce 5L',35)">Adicionar</button>
+  </div>
+</div>
+</div>
+ 
+ <div class="produto">
 <img src="img/sabao-liquido-bonrruque.jpg">
 <h3>Sabão Líquido Bonrruque</h3>
 <div class="variacoes">
@@ -180,7 +213,8 @@ h2{text-align:center;color:#0a7cff}
   </div>
 </div>
 </div>
-
+ 
+ 
 <div class="produto">
 <img src="img/sabao-de-coco.jpg">
 <h3>Sabão de Coco</h3>
@@ -195,16 +229,8 @@ h2{text-align:center;color:#0a7cff}
   </div>
 </div>
 </div>
-
-</div>
-</div>
-
-<!-- CASA -->
-<div id="casa" class="categoria">
-<h2>Casa</h2>
-<div class="produtos">
-
-<div class="produto">
+ 
+ <div class="produto">
 <img src="img/detergente-concentrado.jpg">
 <h3>Detergente Concentrado</h3>
 <div class="variacoes">
@@ -218,8 +244,8 @@ h2{text-align:center;color:#0a7cff}
   </div>
 </div>
 </div>
-
-<div class="produto">
+ 
+ <div class="produto">
 <img src="img/amaciante.jpg">
 <h3>Amaciante</h3>
 <div class="variacoes">
@@ -233,7 +259,46 @@ h2{text-align:center;color:#0a7cff}
   </div>
 </div>
 </div>
+ 
+</div>
+</div>
 
+<!-- CASA -->
+<div id="casa" class="categoria">
+<h2>Casa</h2>
+<div class="produtos">
+ 
+<!-- produtos casa -->
+ <div class="produto">
+<img src="img/detergente-concentrado.jpg">
+<h3>Detergente Concentrado</h3>
+<div class="variacoes">
+  <div class="linha">
+    <span>2L — R$ 12,00</span>
+    <button onclick="addProduto('Detergente 2L',12)">Adicionar</button>
+  </div>
+  <div class="linha">
+    <span>5L — R$ 25,00</span>
+    <button onclick="addProduto('Detergente 5L',25)">Adicionar</button>
+  </div>
+</div>
+</div>
+ 
+ <div class="produto">
+<img src="img/amaciante.jpg">
+<h3>Amaciante</h3>
+<div class="variacoes">
+  <div class="linha">
+    <span>2L — R$ 10,00</span>
+    <button onclick="addProduto('Amaciante 2L',10)">Adicionar</button>
+  </div>
+  <div class="linha">
+    <span>5L — R$ 20,00</span>
+    <button onclick="addProduto('Amaciante 5L',20)">Adicionar</button>
+  </div>
+</div>
+</div>
+ 
 </div>
 </div>
 
@@ -269,14 +334,10 @@ function atualizar(){
  let total=0,itens=0;
 
  carrinho.forEach((p,i)=>{
-  let sub=p.preco*p.qtd;
-  total+=sub;itens+=p.qtd;
+  total+=p.preco*p.qtd; itens+=p.qtd;
   lista.innerHTML+=`
    <li class="item-carrinho">
-    <div>
-      <strong>${p.nome}</strong><br>
-      <strong>R$ ${sub.toFixed(2)}</strong>
-    </div>
+    <div><strong>${p.nome}</strong><br>R$ ${p.preco.toFixed(2)}</div>
     <div>
      <button onclick="diminuir(${i})">➖</button>
      <button onclick="aumentar(${i})">➕</button>
