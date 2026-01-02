@@ -227,66 +227,81 @@ function mostrarCategoria(id, btn) {
 
 function adicionar(nome, preco) {
   const item = carrinho.find(p => p.nome === nome);
+
   if (item) {
     item.qtd++;
   } else {
     carrinho.push({ nome, preco, qtd: 1 });
   }
-  atualizarCarrinho();
-}
 
-function diminuir(nome) {
-  const item = carrinho.find(p => p.nome === nome);
-  if (item) {
-    item.qtd--;
-    if (item.qtd <= 0) remover(nome);
-  }
   atualizarCarrinho();
 }
 
 function remover(nome) {
-  carrinho = carrinho.filter(p => p.nome !== nome);
+  const item = carrinho.find(p => p.nome === nome);
+
+  if (!item) return;
+
+  item.qtd--;
+
+  if (item.qtd <= 0) {
+    carrinho = carrinho.filter(p => p.nome !== nome);
+  }
+
   atualizarCarrinho();
 }
 
 function atualizarCarrinho() {
   const lista = document.getElementById('lista');
-  const totalSpan = document.getElementById('total');
   lista.innerHTML = '';
+
   let total = 0;
 
   carrinho.forEach(item => {
     total += item.preco * item.qtd;
 
     const li = document.createElement('li');
-    li.className = 'item-carrinho';
+    li.style.display = 'flex';
+    li.style.justifyContent = 'space-between';
+    li.style.alignItems = 'center';
+    li.style.marginBottom = '8px';
+
     li.innerHTML = `
-      ${item.nome} (${item.qtd}) - R$ ${(item.preco * item.qtd).toFixed(2)}
+      <span>${item.nome}</span>
       <div>
-        <button class="btn-add" onclick="adicionar('${item.nome}', ${item.preco})">+</button>
-        <button class="btn-rem" onclick="diminuir('${item.nome}')">-</button>
-        <button class="btn-del" onclick="remover('${item.nome}')">x</button>
+        <button onclick="remover('${item.nome}')">−</button>
+        <strong style="margin:0 6px">${item.qtd}</strong>
+        <button onclick="adicionar('${item.nome}', ${item.preco})">+</button>
+        <span style="margin-left:8px">R$ ${(item.preco * item.qtd).toFixed(2)}</span>
       </div>
     `;
+
     lista.appendChild(li);
   });
 
-  totalSpan.textContent = total.toFixed(2);
+  document.getElementById('total').textContent = total.toFixed(2);
 }
 
 function finalizar() {
+  if (carrinho.length === 0) {
+    alert("Carrinho vazio!");
+    return;
+  }
+
   let msg = 'Olá! Gostaria de encomendar:%0A';
   let total = 0;
 
   carrinho.forEach(item => {
-    msg += `- ${item.nome} (${item.qtd}x) - R$ ${(item.preco * item.qtd).toFixed(2)}%0A`;
+    msg += `- ${item.nome} x${item.qtd} = R$ ${(item.preco * item.qtd).toFixed(2)}%0A`;
     total += item.preco * item.qtd;
   });
 
   msg += `%0ATotal: R$ ${total.toFixed(2)}`;
+
   window.open(`https://wa.me/5515996585967?text=${msg}`, '_blank');
 }
 </script>
+
 
 </body>
 </html>
